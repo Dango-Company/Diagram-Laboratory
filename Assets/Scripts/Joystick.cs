@@ -4,9 +4,12 @@ using UnityEngine.EventSystems;
 
 public class Joystick : MonoBehaviour {
 
+	[SerializeField] [Header ("実際に動くスティック部分 (自動設定)")]
 	private GameObject _stick = null;
 	private const string STICK_NAME = "Stick";
+	[SerializeField] [Header ("スティックが動く範囲の半径")]
 	private float _radius = 100f;
+	[SerializeField] [Header ("現在地 (自動更新)")]
 	private Vector2 _position = Vector2.zero;
 	public Vector2 Position {
 		get {

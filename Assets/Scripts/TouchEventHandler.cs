@@ -142,7 +142,5 @@ IDragHandler {
 		float _pinchDifference = _distanceOfPinch - _beforeDistanceOfPinch;
 		onPinch (_pinchDifference);
 		_beforeDistanceOfPinch = _distanceOfPinch;
-		//test
-		Debug.Log (_firstTouch + _secondTouch);
 	}
 }

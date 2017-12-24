@@ -6,12 +6,8 @@ public class Player : MonoBehaviour {
 	[SerializeField]
 	private Joystick _joystick = null;
 
+	public GameObject _damageEffect;
 	private const float SPEED = 0.1f;
-	private GameObject _damageEffect;
-
-	private void Start () {
-		_damageEffect = GameObject.Find ("DamageEffect");
-	}
 
 	private void Update () {
 		Vector3 _position = transform.position;
@@ -20,15 +16,13 @@ public class Player : MonoBehaviour {
 		transform.position = _position;
 	}
 
-	private void OnTriggerEnter (Collider _collider) {
+	private void OnTriggerEnter2D (Collider2D _collider) {
 		if (_collider.gameObject.tag == "Bullet") {
 			StartCoroutine ("DamageEffect");
 		}
 	}
 
 	private IEnumerator DamageEffect () {
-		//test
-		Debug.Log ("a");
 		_damageEffect.SetActive (true);
 		yield return new WaitForSeconds (0.1f);
 		_damageEffect.SetActive (false);

@@ -8,6 +8,9 @@ TagManager:
   - ObstaclePoint
   - Canvas
   - Obstacle
+  - Wall
+  - LineToUp
+  - LineToDown
   layers:
   - Default
   - TransparentFX

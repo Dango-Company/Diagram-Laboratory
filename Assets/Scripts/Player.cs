@@ -26,22 +26,21 @@ public class Player : MonoBehaviour {
 			_radian = Mathf.Atan2 (_distanceY, _distanceX);
 			_playerDistanceX = _distance * Mathf.Cos (_radian);
 			_playerDistanceY = _distance * Mathf.Sin (_radian);
+			transform.position += new Vector3 (_playerDistanceX, _playerDistanceY, 0f);
 			_beforePositionX = _positionX;
 			_beforePositionY = _positionY;
-		}
-		Debug.Log (_playerDistanceX + ", " + _playerDistanceY);
-		transform.position += new Vector3 (_playerDistanceX, _playerDistanceY, 0f);
-		if (!GetComponent <Renderer> ().isVisible) {
-			StartCoroutine ("Damage");
 		}
 	}
 
 	private void OnTriggerEnter2D (Collider2D _collider2D) {
-		if (_collider2D.gameObject.tag == "Bullet") {
-			StartCoroutine ("Damage");
+		if (_collider2D.tag == "Wall") {
+			//JunJun
 		}
-		if (_collider2D.gameObject.tag == "Obstacle") {
-			StartCoroutine ("Damage");
+		if (_collider2D.tag == "LineToUp") {
+			Camera.main.GetComponent <CameraManager> ().GoToUp ();
+		}
+		if (_collider2D.tag == "LineToDown") {
+			Camera.main.GetComponent <CameraManager> ().GoToDown ();
 		}
 	}
 

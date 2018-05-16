@@ -42,6 +42,18 @@ public class Player : MonoBehaviour {
 		if (_collider2D.tag == "LineToDown") {
 			Camera.main.GetComponent <CameraManager> ().GoToDown ();
 		}
+		if (_collider2D.tag == "LineToLeft") {
+			transform.position = new Vector3 (-1575f, 75f, 0f);
+			Camera.main.GetComponent <CameraManager> ().GoToLeft ();
+		}
+		if (_collider2D.tag == "LineToStraight") {
+			transform.position = new Vector3 (667f, 75f, 0f);
+			Camera.main.GetComponent <CameraManager> ().GoToStraight ();
+		}
+		if (_collider2D.tag == "LineToRight") {
+			transform.position = new Vector3 (2909f, 75f, 0f);
+			Camera.main.GetComponent <CameraManager> ().GoToRight ();
+		}
 	}
 
 	private IEnumerator Damage () {

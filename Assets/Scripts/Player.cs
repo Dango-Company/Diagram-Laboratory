@@ -3,15 +3,20 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
+	private Rigidbody2D _rigidbody2D = null;
 	private float _positionX = 0f, _positionY = 0f;
 	private float _beforePositionX = 0f, _beforePositionY = 0f;
+	float _playerDistanceX = 0f, _playerDistanceY = 0f;
 	public GameObject _DamageEffect = null;
+
+	private void Start () {
+		_rigidbody2D = GetComponent <Rigidbody2D> ();
+	}
 
 	private void Update () {
 		float _distance = 0f;
 		float _distanceX = 0f, _distanceY = 0f;
 		float _radian = 0f;
-		float _playerDistanceX = 0f, _playerDistanceY = 0f;
 		if (Input.touchCount > 0) {
 			Touch _touch = Input.GetTouch (0);
 			if (_touch.phase == TouchPhase.Began) {
@@ -26,15 +31,20 @@ public class Player : MonoBehaviour {
 			_radian = Mathf.Atan2 (_distanceY, _distanceX);
 			_playerDistanceX = _distance * Mathf.Cos (_radian);
 			_playerDistanceY = _distance * Mathf.Sin (_radian);
-			transform.position += new Vector3 (_playerDistanceX, _playerDistanceY, 0f);
 			_beforePositionX = _positionX;
 			_beforePositionY = _positionY;
+		} else {
+			_playerDistanceX = 0f;
+			_playerDistanceY = 0f;
 		}
+	}
+
+	private void FixedUpdate () {
+		_rigidbody2D.velocity = new Vector3 (_playerDistanceX, _playerDistanceY, 0f) * 25f;
 	}
 
 	private void OnTriggerEnter2D (Collider2D _collider2D) {
 		if (_collider2D.tag == "Wall") {
-			//JunJun
 		}
 		if (_collider2D.tag == "LineToUp") {
 			Camera.main.GetComponent <CameraManager> ().GoToUp ();

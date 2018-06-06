@@ -17,4 +17,8 @@ public class Enemy : MonoBehaviour {
 		yield return new WaitForSeconds (1f);
 		_count++;
 	}
+
+	private void OnBecameInvisible () {
+		Destroy (gameObject);
+	}
 }

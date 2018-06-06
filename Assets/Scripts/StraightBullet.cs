@@ -11,9 +11,7 @@ public class StraightBullet : MonoBehaviour {
 		_rigidbody2D.AddForce (transform.up * _speed);
 	}
 
-	private void Update () {
-		if (!GetComponent <Renderer> ().isVisible) {
-			Destroy (gameObject);
-		}
+	private void OnBecameInvisible () {
+		Destroy (gameObject);
 	}
 }

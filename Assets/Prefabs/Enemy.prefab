@@ -52,7 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4b6b2487d954454890d509f5a85788d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _StraightBullet: {fileID: 1402969888128102, guid: fe4839835eeec40ebb72db4362eb210f,
+  _Bullet: {fileID: 1402969888128102, guid: fe4839835eeec40ebb72db4362eb210f, type: 2}
+  _FastBullet: {fileID: 1401502650287370, guid: 42f647b8e5f0a4d74960e204bf297729,
     type: 2}
 --- !u!212 &212951065604468810
 SpriteRenderer:
@@ -67,6 +68,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:

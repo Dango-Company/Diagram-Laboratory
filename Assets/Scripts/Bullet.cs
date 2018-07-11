@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class StraightBullet : MonoBehaviour {
+public class Bullet : MonoBehaviour {
 
 	private float _speed = 0f;
 	private Rigidbody2D _rigidbody2D = null;

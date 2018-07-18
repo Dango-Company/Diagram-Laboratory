@@ -5,7 +5,7 @@ public class Enemy : MonoBehaviour {
 
 	public GameObject _Bullet = null;
     public GameObject _FastBullet = null;
-    public float GetAim () {
+    private float GetAim () {
         Vector2 _origin = new Vector2 (1f, 0f);
         Vector2 _difference = transform.position - GameObject.Find("Player").transform.position;
         return Vector2.Angle (_difference, _origin);

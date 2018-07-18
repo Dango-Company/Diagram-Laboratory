@@ -11,6 +11,7 @@ public class Player : MonoBehaviour {
 
 	private void Start () {
 		_rigidbody2D = GetComponent <Rigidbody2D> ();
+        StageManager._StateNow = "Bottom";
 	}
 
 	private void Update () {
@@ -44,13 +45,27 @@ public class Player : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter2D (Collider2D _collider2D) {
-		if (_collider2D.tag == "Wall") {
-		}
 		if (_collider2D.tag == "LineToUp") {
-			Camera.main.GetComponent <CameraManager> ().GoToUp ();
+            Camera.main.GetComponent <CameraManager> ().GoToUp ();
+            if (StageManager._StateNow == "Bottom") {
+                StageManager._StateNow = "Center";
+                Debug.Log ("UpToCenter");
+            }
+            if (StageManager._StateNow == "Center" && transform.position.y >= 1125f && transform.position.y < 1500f) {
+                StageManager._StateNow = "Top";
+                Debug.Log ("UpToTop");
+            }
 		}
 		if (_collider2D.tag == "LineToDown") {
-			Camera.main.GetComponent <CameraManager> ().GoToDown ();
+            Camera.main.GetComponent <CameraManager> ().GoToDown ();
+            if (StageManager._StateNow == "Center" && transform.position.y >= 750f && transform.position.y < 1125f) {
+                StageManager._StateNow = "Bottom";
+                Debug.Log ("DownToBottom");
+            }
+            if (StageManager._StateNow == "Top") {
+                StageManager._StateNow = "Center";
+                Debug.Log ("DownToCenter");
+            }
 		}
 		if (_collider2D.tag == "LineToLeft") {
 			transform.position = new Vector3 (-1575f, 75f, 0f);

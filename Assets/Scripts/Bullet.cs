@@ -11,6 +11,12 @@ public class Bullet : MonoBehaviour {
 		_rigidbody2D.AddForce (transform.up * _speed);
 	}
 
+    private void OnTriggerEnter2D (Collider2D _collider2D) {
+        if (_collider2D.tag == "Wall") {
+            Destroy (gameObject);
+        }
+    }
+
 	private void OnBecameInvisible () {
 		Destroy (gameObject);
 	}
